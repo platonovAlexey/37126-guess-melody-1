@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Alexey Platonov](https://up.htmlacademy.ru/ecmascript/4/user/37126).
-* Наставник: `Неизвестно`.
+* Наставник: `У меня нет наставника`.
 
 ---
 
