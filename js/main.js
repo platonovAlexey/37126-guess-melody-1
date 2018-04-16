@@ -1,4 +1,5 @@
-import show from './utils/show';
-import greeting from './components/greeting';
+import {showScreen} from './util.js';
+import {SCREENS as screen} from "./data/game-data";
+import welcome from './gameplay/welcome';
 
-show(greeting);
+showScreen(welcome(screen.welcome));
