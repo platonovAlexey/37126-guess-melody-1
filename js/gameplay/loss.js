@@ -1,19 +1,13 @@
-import {stringToElement, showScreen} from '../util';
-import {SCREENS as screen} from "../data/game-data";
+import {showScreen} from '../util';
 import welcome from './welcome';
+import LossView from "../view/loss-view";
 
-export default (content) => {
-  const html = `
-  <section class="main main--result">
-    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
-    <h2 class="title">${content.heading}</h2>
-    <div class="main-stat">${content.message}</div>
-    <span role="button" tabindex="0" class="main-replay">${content.button}</span>
-  </section>`;
-
-  const gameScreen = stringToElement(html);
-  gameScreen.querySelector(`.main-replay`).onclick = () => {
-    showScreen(welcome(screen.welcome));
+const loss = (content) => {
+  const view = new LossView(content);
+  view.onReplay = () => {
+    showScreen(welcome());
   };
-  return gameScreen;
+  return view;
 };
+
+export default loss;
