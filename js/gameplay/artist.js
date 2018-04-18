@@ -1,24 +1,21 @@
-import {stringToElement, renderNextScreen} from '../util';
-import getHeader from '../templates/header';
-import getContent from '../templates/main';
 import {processUserAnswer} from "../data/game-data";
-import {bindPlayerEvents} from "../templates/player";
+import {renderNextScreen} from '../util';
+import ArtistView from '../view/artist-view';
+import timer from '../timer';
 
-export default (data, level) => {
-  const html = `
-  ${getHeader(data)}
-  ${getContent(level)}`;
-  const gameScreen = stringToElement(html);
-  const answersForm = gameScreen.querySelector(`.main-list`);
-
-  bindPlayerEvents(gameScreen);
-  answersForm.onclick = (evt) => {
-    if (evt.target.className === `main-answer-r`) {
-      const isCorrectAnswer = evt.target.value === `true`;
-      const dataUpdate = processUserAnswer(isCorrectAnswer, data);
-      renderNextScreen(dataUpdate);
-    }
+const artist = (game, level) => {
+  let answerTime = 0;
+  const view = new ArtistView(game, level);
+  view.onAnswer = (userAnswerStatus, currentState) => {
+    const stateUpdate = processUserAnswer(userAnswerStatus, currentState, answerTime);
+    renderNextScreen(stateUpdate);
   };
-
-  return gameScreen;
+  timer.onTick = () => {
+    view.data.time = timer.time;
+    view.onTimerTick();
+    answerTime++;
+  };
+  return view;
 };
+
+export default artist;

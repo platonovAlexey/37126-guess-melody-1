@@ -11,9 +11,8 @@ export const player = (audio) => `
     </div>
   </div>`;
 
-export const bindPlayerEvents = (node) => {
-  const players = node.querySelectorAll(`.player`);
-  players.forEach((it) => {
+export const bindPlayerEvents = (nodeList) => {
+  nodeList.forEach((it) => {
     const track = it.querySelector(`audio`);
     const button = it.querySelector(`button`);
     button.onclick = (evt) =>{

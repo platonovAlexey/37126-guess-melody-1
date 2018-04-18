@@ -1,19 +1,12 @@
-import {stringToElement, renderNextScreen} from '../util';
-import {initialState as initial} from "../data/game-data";
+import {renderNextScreen} from '../util';
+import {initialState as initial, SCREENS} from "../data/game-data";
+import WelcomeView from '../view/welcome-view';
+import timer from '../timer';
 
-export default (content) => {
-  const html = `
-  <section class="main main--welcome">
-    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
-    <button class="main-play">Начать игру</button>
-    <h2 class="title main-title">${content.rules.heading}</h2>
-    <p class="text main-text">${content.rules.text}</p>
-  </section>`;
-  const game = Object.assign({}, initial);
-  const gameScreen = stringToElement(html);
-  gameScreen.querySelector(`.main-play`).onclick = () => {
-    renderNextScreen(game);
-  };
-
-  return gameScreen;
+const welcome = new WelcomeView(SCREENS.welcome);
+welcome.onStart = () => {
+  renderNextScreen(Object.assign({}, initial));
+  timer.start();
 };
+
+export default () => welcome;

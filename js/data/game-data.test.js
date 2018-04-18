@@ -1,5 +1,6 @@
 import assert from 'assert';
-import {getScore, getMessage, timer, isSelectedCorrect} from './game-data';
+import timer from '../timer';
+import {getScore, getMessage, isSelectedCorrect} from './game-data';
 
 const fastAnswers = new Array(10).fill({
   correct: true,
@@ -81,33 +82,30 @@ describe(`getMessage`, () => {
 });
 
 describe(`Timer`, () => {
-  it(`should not accept negative number`, () => {
-    assert.throws(() => timer(-3));
-  });
-  it(`should not accept decimal number`, () => {
-    assert.throws(() => timer(3.2));
-  });
-  it(`should accept only number`, () => {
-    assert.throws(() => timer(`1`));
-    assert.throws(() => timer([]));
-    assert.throws(() => timer({}));
-    assert.throws(() => timer(NaN));
-    assert.throws(() => timer(null));
-  });
   it(`should decrease time by 1 on every tick`, () => {
-    const myTimer = timer(60);
-    myTimer.tick();
-    assert.equal(59, myTimer.value);
+    timer.time = 20;
+    timer.tick();
+    assert.equal(19, timer.time);
   });
   it(`should not return negative values`, () => {
-    const myTimer = timer(1);
-    myTimer.tick();
-    myTimer.tick();
-    assert.notEqual(-1, myTimer.value);
+    timer.time = 1;
+    timer.tick();
+    timer.tick();
+    assert.notEqual(-1, timer.time);
   });
-  it(`should return false when time is over`, () => {
-    const myTimer = timer(1);
-    assert.equal(false, myTimer.tick());
+  it(`should return true`, () => {
+    timer.time = 1;
+    assert.equal(true, timer.tick());
+  });
+  it(`should return 0 when finished`, () => {
+    timer.time = 1;
+    timer.tick();
+    assert.equal(0, timer.time);
+  });
+  it(`should return false when time.tick() invoced after finish`, () => {
+    timer.time = 1;
+    timer.tick();
+    assert.equal(false, timer.tick());
   });
 });
 

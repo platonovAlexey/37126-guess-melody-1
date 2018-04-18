@@ -13,8 +13,8 @@ export const stringToElement = (str) => {
   return template.content.firstElementChild;
 };
 
-export const showScreen = (element) => {
-  appContainer.replaceChild(element, appContainer.querySelector(`.main`));
+export const showScreen = (view) => {
+  appContainer.replaceChild(view.element, appContainer.querySelector(`.main`));
 };
 
 export const isAnswerPresent = (elements) => {
