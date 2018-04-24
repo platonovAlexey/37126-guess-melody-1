@@ -1,4 +1,3 @@
-import {showScreen} from './util';
-import welcome from './gameplay/welcome';
+import App from './application';
 
-showScreen(welcome());
+App.showWelcome();

@@ -9,7 +9,7 @@ const Answer = {
   FAST: 2
 };
 
-export const TIME_TOTAL = 10;
+export const TIME_TOTAL = 300;
 export const MISTAKES_ALLOWED = 3;
 export const ARTIST_LEVEL = 1;
 export const LEVELS = musicData;
