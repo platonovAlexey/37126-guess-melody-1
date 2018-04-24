@@ -1,11 +1,11 @@
 import {getMinutes, getSeconds} from '../util';
-import {getScore, getMessage, getFastAnswers} from "../data/game-data";
+import {getScore, getMessage, getFastAnswers, SCREENS} from "../data/game-data";
 import AbstractView from './view';
 
 export default class WinView extends AbstractView {
-  constructor(game, content) {
+  constructor(game) {
     super();
-    this.content = content;
+    this.content = SCREENS.winner;
     this.game = game;
   }
   get template() {

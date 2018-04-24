@@ -1,9 +1,10 @@
+import {SCREENS} from "../data/game-data";
 import AbstractView from './view';
 
 export default class WelcomeView extends AbstractView {
-  constructor(content) {
+  constructor() {
     super();
-    this.content = content;
+    this.content = SCREENS.welcome;
   }
   get template() {
     return `
