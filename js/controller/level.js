@@ -1,4 +1,4 @@
-import {processUserAnswer, initialState as initial, LEVELS, ARTIST_LEVEL} from "../data/game-data";
+import {processUserAnswer, ARTIST_LEVEL, MISTAKES_ALLOWED} from "../data/game-data";
 import {showScreen} from '../util';
 import App from '../application';
 import GenreView from '../view/genre-view';
@@ -7,9 +7,13 @@ import timer from '../timer';
 
 class Level {
   init(game) {
-    this.game = typeof game === `undefined` ? Object.assign({}, initial) : game;
-    this.level = LEVELS[this.game.currentLevel];
-    if (!this.level) {
+    this.game = game;
+    timer.time = this.game.time;
+    if (!timer.isOn) {
+      timer.start();
+    }
+    this.level = App.levels[this.game.currentLevel];
+    if (!this.level || this.game.mistakes > MISTAKES_ALLOWED) {
       App.showResult(this.game);
       return;
     }
