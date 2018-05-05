@@ -1,5 +1,3 @@
-import musicData from './music-data';
-
 const QUESTIONS_TOTAL = 10;
 const FAST_ANSWER_TIME = 30;
 const GAME_INCOMPLETE = -1;
@@ -12,7 +10,6 @@ const Answer = {
 export const TIME_TOTAL = 300;
 export const MISTAKES_ALLOWED = 3;
 export const ARTIST_LEVEL = 1;
-export const LEVELS = musicData;
 export const SCREENS = {
   welcome: {
     rules: {
@@ -34,13 +31,16 @@ export const SCREENS = {
   },
   winner: {
     heading: `Вы настоящий меломан!`,
-    stats: null,
     button: `Сыграть ещё раз`
+  },
+  loader: {
+    heading: `Пожалуйста подождите`,
+    message: `Приложение загружает данные...`,
+    button: ``
   }
 };
 
 export const initialState = {
-  result: null,
   time: TIME_TOTAL,
   mistakes: 0,
   currentLevel: 0,

@@ -8,6 +8,7 @@ class Timer {
       throw new Error(`Parameter must be positive integer number`);
     }
     this._time = newTime;
+    this._isOn = false;
   }
 
   set time(newTime) {
@@ -16,6 +17,10 @@ class Timer {
 
   get time() {
     return this._time;
+  }
+
+  get isOn() {
+    return this._isOn;
   }
 
   tick() {
@@ -27,6 +32,7 @@ class Timer {
   }
 
   start() {
+    this._isOn = true;
     this.interval = setInterval(() => {
       if (this.tick()) {
         this.onTick();
@@ -39,6 +45,7 @@ class Timer {
   stop() {
     clearInterval(this.interval);
     this._time = TIME_TOTAL;
+    this._isOn = false;
   }
 
   onTick() {
