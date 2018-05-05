@@ -1,6 +1,6 @@
 import AbstractView from './view';
 import {isAnswerPresent} from '../util';
-import {isSelectedCorrect} from '../data/game-data';
+import {isSelectedCorrect, ALARM_TIME} from '../data/game-data';
 import {bindPlayerEvents} from "../templates/player";
 import getHeader from '../templates/header';
 import getContent from '../templates/main';
@@ -11,6 +11,7 @@ export default class GenreView extends AbstractView {
     super();
     this.data = data;
     this.level = level;
+    this.timer = this.element.querySelector(`.timer-value`);
     this.mins = this.element.querySelector(`.timer-value-mins`);
     this.secs = this.element.querySelector(`.timer-value-secs`);
   }
@@ -40,6 +41,9 @@ export default class GenreView extends AbstractView {
   onTimerTick() {
     this.mins.innerHTML = getMinutes(this.data.time, true);
     this.secs.innerHTML = getSeconds(this.data.time, true);
+    if (this.data.time < ALARM_TIME) {
+      this.timer.classList.add(`timer-value--finished`);
+    }
   }
   onAnswer() {
 

@@ -8,8 +8,12 @@ const Answer = {
 };
 
 export const TIME_TOTAL = 300;
+export const ALARM_TIME = 30;
 export const MISTAKES_ALLOWED = 3;
-export const ARTIST_LEVEL = 1;
+export const QuestionType = {
+  GENRE: `genre`,
+  ARTIST: `artist`
+};
 export const SCREENS = {
   welcome: {
     rules: {
