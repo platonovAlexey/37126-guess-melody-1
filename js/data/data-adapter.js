@@ -15,14 +15,9 @@ const preprocessAnswers = (answers, genre) => {
   });
 };
 
-const QuestionType = {
-  GENRE: `genre`,
-  ARTIST: `artist`
-};
-
 export default (data) => {
   return data.map((it) => ({
-    type: it.type === QuestionType.ARTIST ? 1 : 0,
+    type: it.type,
     question: it.question,
     src: it.src || null,
     answers: preprocessAnswers(it.answers, it.genre)

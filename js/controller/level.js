@@ -1,4 +1,4 @@
-import {processUserAnswer, ARTIST_LEVEL, MISTAKES_ALLOWED} from "../data/game-data";
+import {processUserAnswer, QuestionType, MISTAKES_ALLOWED} from "../data/game-data";
 import {showScreen} from '../util';
 import App from '../application';
 import GenreView from '../view/genre-view';
@@ -36,7 +36,7 @@ class Level {
 
   setView() {
     this.view
-        = this.level.type === ARTIST_LEVEL
+        = this.level.type === QuestionType.ARTIST
         ?
         new ArtistView(this.game, this.level)
         :

@@ -1,7 +1,7 @@
 import {showScreen} from '../util';
 import WelcomeView from '../view/welcome-view';
 import App from '../application';
-import timer from '../timer';
+
 
 class Welcome {
   constructor() {
@@ -12,7 +12,6 @@ class Welcome {
     showScreen(this.view);
     this.view.onStart = () => {
       App.showLevel();
-      timer.start();
     };
   }
 }
