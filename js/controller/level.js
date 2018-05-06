@@ -17,7 +17,7 @@ class Level {
       App.showResult(this.game);
       return;
     }
-    this.setView();
+    this._setView();
     let answerTime = 0;
     showScreen(this.view);
     this.view.onAnswer = (userAnswerStatus, currentState) => {
@@ -34,7 +34,7 @@ class Level {
     };
   }
 
-  setView() {
+  _setView() {
     this.view
         = this.level.type === QuestionType.ARTIST
         ?

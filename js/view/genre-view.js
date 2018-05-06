@@ -1,4 +1,4 @@
-import AbstractView from './view';
+import AbstractView from './abstract-view';
 import {isAnswerPresent} from '../util';
 import {isSelectedCorrect, ALARM_TIME} from '../data/game-data';
 import {bindPlayerEvents} from "../templates/player";

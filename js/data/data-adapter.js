@@ -5,13 +5,12 @@ const preprocessAnswers = (answers, genre) => {
         src: it.src,
         correct: it.genre === genre
       };
-    } else {
-      return {
-        image: it.image.url,
-        artist: it.title,
-        correct: it.isCorrect
-      };
     }
+    return {
+      image: it.image.url,
+      artist: it.title,
+      correct: it.isCorrect
+    };
   });
 };
 

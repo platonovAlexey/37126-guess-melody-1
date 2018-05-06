@@ -1,4 +1,4 @@
-import AbstractView from './view';
+import AbstractView from './abstract-view';
 import {bindPlayerEvents} from "../templates/player";
 import getHeader from '../templates/header';
 import getContent from '../templates/main';

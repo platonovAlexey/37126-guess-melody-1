@@ -1,6 +1,6 @@
-import {player} from './player';
+import {getMusicPlayer} from './player';
 
-export default (level) => `${player(level)}
+export default (level) => `${getMusicPlayer(level)}
 <form class="main-list">
   ${[...level.answers].map((answer, index) => {
     return `<div class="main-answer-wrapper">

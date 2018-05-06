@@ -52,13 +52,13 @@ export default class Application {
       [ControllerId.RESULT]: result
     };
 
-    const hashChangeHandler = () => {
+    const getChangeHash = () => {
       const hashValue = location.hash.replace(`#`, ``);
       const [id, data] = hashValue.split(`=`);
       Application.changeHash(id, loadGame(data));
     };
-    window.onhashchange = hashChangeHandler;
-    hashChangeHandler();
+    window.onhashchange = getChangeHash;
+    getChangeHash();
 
     timer.start();
   }

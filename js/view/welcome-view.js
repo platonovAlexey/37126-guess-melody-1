@@ -1,5 +1,5 @@
 import {SCREENS} from "../data/game-data";
-import AbstractView from './view';
+import AbstractView from './abstract-view';
 
 export default class WelcomeView extends AbstractView {
   constructor() {

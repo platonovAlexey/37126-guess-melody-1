@@ -1,6 +1,6 @@
 import {getMinutes, getSeconds} from '../util';
 import {getScore, getMessage, getFastAnswers, SCREENS, TIME_TOTAL} from "../data/game-data";
-import AbstractView from './view';
+import AbstractView from './abstract-view';
 
 export default class WinView extends AbstractView {
   constructor(game, leaderBoard) {

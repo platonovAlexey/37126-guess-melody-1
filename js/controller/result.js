@@ -10,7 +10,7 @@ class Result {
   init(game) {
     timer.stop();
     this.game = game;
-    this.setView();
+    this._setView();
     if (!this.view) {
       App.showLoader();
     } else {
@@ -21,7 +21,7 @@ class Result {
     }
   }
 
-  setView() {
+  _setView() {
     if (this.game.time === 0) {
       this.view = new LossView(SCREENS.timeout);
     }
@@ -42,7 +42,7 @@ class Result {
           }).then((view) => {
             showScreen(view);
             view.onReplay = () => {
-              App.showWelcome();
+              App.showLevel();
             };
           });
     }
