@@ -16,7 +16,7 @@ class Result {
     } else {
       showScreen(this.view);
       this.view.onReplay = () => {
-        App.showWelcome();
+        App.showLevel();
       };
     }
   }

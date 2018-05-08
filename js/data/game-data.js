@@ -52,20 +52,18 @@ export const initialState = {
 };
 
 export const getScore = (answers) => {
-  let score;
   if (answers.length !== QUESTIONS_TOTAL) {
-    score = GAME_INCOMPLETE;
-  } else {
-    score = answers.reduce((sum, el) => {
-      if (!el.correct) {
-        sum += Answer.WRONG;
-      } else {
-        sum += el.time < FAST_ANSWER_TIME ? Answer.FAST : Answer.CORRECT;
-      }
-      return sum;
-    }, 0);
+    return GAME_INCOMPLETE;
   }
-  return score;
+
+  return answers.reduce((sum, el) => {
+    if (!el.correct) {
+      sum += Answer.WRONG;
+    } else {
+      sum += el.time < FAST_ANSWER_TIME ? Answer.FAST : Answer.CORRECT;
+    }
+    return sum;
+  }, 0);
 };
 
 export const getMessage = (leaders, player) => {
